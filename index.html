@@ -1,28 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyberscape</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      background: black;
-    }
-    canvas {
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Cookie&display=swap" rel="stylesheet">
+    <title>Cyberscape</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            background: #0c0c0f;
+            font-family: 'Bitcount Grid Double','Courier New', Courier, monospace;
+            color: rgb(255, 241, 241);
+        }
+
+        #gameCanvas {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            background: black;
+        }
+
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            font-family: 'Bitcount Grid Double',monospace;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #0ff;
+            color: white;
+        }
+
+        #healthBarContainer {
+            width: 200px;
+            height: 20px;
+            background: #111;
+            border: 2px solid #f55;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        #healthBar {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgb(16, 255, 231), rgb(32, 47, 255), rgb(255, 38, 193));
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        #keyCounter, #shardCount, #playerHealth {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        #resetButton {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #0ff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cookie','Courier New', Courier, monospace;
+            font-size: 25px;
+        }
+
+        #resetButton:hover {
+            background: #0cc;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="game"></canvas>
+    <canvas id="gameCanvas" style="display: block; background: #000;"></canvas>
+    <div id="ui">
+        <div id="healthBarContainer">
+            <div id="healthBar"></div>
+        </div>
+        <div id="playerHealth">Player HP: 100</div>
+        <div id="keyCounter">Keys x0</div>
+        <div id="shardCount">Shards x0</div>
+        <button id="resetButton">Reset Game</button>
+    </div>
     <script src="cyberscape.js"></script>
 </body>
 </html>
